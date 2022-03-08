@@ -1,2 +1,2 @@
 # CECS-575-project
-#Notdiscord
+#Accord (Chat Messaging Application)
