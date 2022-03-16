@@ -6,7 +6,8 @@ package CECS575;
 */
 
 //Java Library definitions
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MasterUserList {
 	
@@ -14,11 +15,13 @@ public class MasterUserList {
 	private static MasterUserList single_instance = null;
 	
 	// The userList stored within the singleton
-	public ArrayList<User> users;
+	public Set<User> users;
+	public Set<String> userIds;
 	
 	// private constructor allowing only the MasterUserList class to create itself
 	private MasterUserList() {
-		users = new ArrayList<User>();
+		users = new HashSet<User>();
+		userIds = new HashSet<String>();
 	}
 	
 	// static method with lazy loading to provide a singleton instance to the requesting body

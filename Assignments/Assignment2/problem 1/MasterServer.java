@@ -1,57 +1,46 @@
 //Package definitions
+package CECS575;
 
-/*
-*Singleton Class MasterServer
-*/
-
-//Java Libray definitions 
+//Java Library definitions 
 import java.util.ArrayList;
 
 public class MasterServer{
 	//MasterServer singleton instance
-	private static MasterServer masterServer = new MasterServer();
-	private MasterUserList userList;
-	private ArrayList <PivateServer> serverList;
+	private ArrayList <PrivateServer> serverList;
 	
 	
-	private Master(){
-		serverList = mew ArrayList<PrivateServer>();
+	private MasterServer(){
+		serverList = new ArrayList<PrivateServer>();
 	}
 	
-	public void generateUser(){
+	public boolean generateUser(String loginName, String password){
+		MasterUserList MUList = MasterUserList.getInstance();
+		if(MUList.userIds.contains(loginName)) {
+			return false;
+		}
 		
+		User newUser = new User(loginName, password);
+		return MUList.users.add(newUser);
 	}
 	
-	public void generatePrivateServer(Admin){
-		
-	}
-	
-	// userList getter and setter methods
-	public setMasterUserList(MasterUserList userList){
-		this.userlist=userlist;	
-	}
-	
-	public MasterUserList getUserList(){
-		return userList;
+	public void generatePrivateServer(User Admin, String serverName){
+		PrivateServer newServer = new PrivateServerBasic(serverName);
+		serverList.add(newServer);
 	}
 	
 	// serverList getter and setter methods
-	public void setServerList(PrivateServer user){
+	public void addServerList(PrivateServer pServer){
 		//setting logic 
-		serverlist.add(user);	
+		serverList.add(pServer);	
 	}
 	
 	public ArrayList <PrivateServer> getServerList(){
 		return serverList;
 	}
 	
-	//delete user from server list	
-	public void delServerList (PrivateServer user){
-		serverlist.remove(user);	
+	//delete privateServer from server list	
+	public void delServerList (PrivateServer pServer){
+		serverList.remove(pServer);	
 	}
 	
-	//MasterServer instance
-	public static MasterServer getMasterServer(){
-		return masterServer;
-	}
 }
