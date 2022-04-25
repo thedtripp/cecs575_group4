@@ -3,7 +3,7 @@ package Accord;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessagePublisher implements MessageSubject {
+public class ConcreteMessageSubject implements MessageSubject {
     
     private List<Observer> observers = new ArrayList<>();
  

@@ -1,6 +1,6 @@
 package Accord;
 
-public class MessageSubscriber implements Observer 
+public class ConcreteObserver implements Observer 
 {
     @Override
     public void update(Message m) {
