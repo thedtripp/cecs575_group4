@@ -28,4 +28,40 @@ public abstract class PrivateServer implements Cloneable {
         }
         return clone;
     }
+    
+    public Memento saveToMemento() {
+    	return new Memento(members, channelList, userManager);
+    }
+    
+    public void restoreFromMemento(Memento m) {
+    	members = m.getMembers();
+    	channelList = m.getChannels();
+    	userManager = m.getUserManager();
+    }
+    
+    public static class Memento {
+    	
+    	private final ArrayList<User> members;
+    	private final ArrayList<Channel> channelList;
+    	private final UserManager userManager;
+    	
+    	public Memento(ArrayList<User> mem, ArrayList<Channel> channels, UserManager userM) {
+    		members = mem;
+    		channelList = channels;
+    		userManager = userM;
+    	}
+    	
+    	public ArrayList<User> getMembers() {
+    		return members;
+    	}
+    	
+    	public ArrayList<Channel> getChannels() {
+    		return channelList;
+    	}
+    	
+    	public UserManager getUserManager() {
+    		return userManager;
+    	}
+    	
+    }
 }
